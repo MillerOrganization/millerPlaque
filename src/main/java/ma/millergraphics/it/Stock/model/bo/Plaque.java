@@ -1,5 +1,6 @@
 package ma.millergraphics.it.Stock.model.bo;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -18,6 +19,7 @@ public abstract class Plaque extends Article{
     private String designation;
     @Column(nullable = false)
     private long numeroArticle;
+	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
     @ManyToOne
     private GroupeArticle groupeArticle;
     

@@ -1,5 +1,6 @@
 package ma.millergraphics.it.Stock.model.bo;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 import javax.persistence.*;
@@ -18,6 +19,7 @@ public class GroupeArticle implements Serializable {
     private Long id;
     @Column(length = 25)
     private String designation;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "groupeArticle",fetch = FetchType.EAGER)
     private Collection<Plaque> plaques=new HashSet<Plaque>();
      

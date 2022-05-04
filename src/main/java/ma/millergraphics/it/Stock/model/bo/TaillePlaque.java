@@ -5,6 +5,7 @@ import java.util.*;
 import javax.persistence.*;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 @Entity
@@ -20,6 +21,7 @@ public class TaillePlaque {
 	private long largeur;
 	@Transient
 	private long surface;
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	@OneToMany(mappedBy = "taille", fetch = FetchType.EAGER)
 	private Collection<PlaqueStandard> plaqueStandards=new HashSet<PlaqueStandard>();
 	

@@ -7,6 +7,7 @@ import javax.persistence.*;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -16,6 +17,7 @@ public class PlaqueStandard extends Plaque {
 	/*
 	 * @Id private Long id;
 	 */
+	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
 	@ManyToOne
 	private TaillePlaque taille;
 	
