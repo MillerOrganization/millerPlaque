@@ -1,4 +1,4 @@
-package ma.millergraphics.it.Stock.model.dao;
+package ma.millergraphics.it.stock.model.dao;
 
 
 public class Test {

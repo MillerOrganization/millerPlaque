@@ -1,4 +1,4 @@
-package ma.millergraphics.it.Stock.model.bo;
+package ma.millergraphics.it.stock.model.bo;
 
 import java.util.*;
 

@@ -1,6 +1,4 @@
-package ma.millergraphics.it.Stock.model.bo;
-
-import java.io.Serializable;
+package ma.millergraphics.it.stock.model.bo;
 
 import javax.persistence.*;
 
