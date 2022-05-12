@@ -1,11 +1,9 @@
-package ma.millergraphics.it.Stock.model.bo;
+package ma.millergraphics.it.stock.model.bo;
 
 import java.io.Serializable;
 import java.util.*;
 
 import javax.persistence.*;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import lombok.Data;
 

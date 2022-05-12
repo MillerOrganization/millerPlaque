@@ -1,6 +1,6 @@
-package ma.millergraphics.it.Stock;
+package ma.millergraphics.it.stock;
 
-import ma.millergraphics.it.Stock.model.bo.Utilisateur;
+import ma.millergraphics.it.stock.model.bo.Utilisateur;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

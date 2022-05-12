@@ -1,10 +1,6 @@
-package ma.millergraphics.it.Stock.model.bo;
-
-import java.io.Serializable;
+package ma.millergraphics.it.stock.model.bo;
 
 import javax.persistence.*;
-
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;

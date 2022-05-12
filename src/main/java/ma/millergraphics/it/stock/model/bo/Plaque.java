@@ -1,12 +1,10 @@
-package ma.millergraphics.it.Stock.model.bo;
+package ma.millergraphics.it.stock.model.bo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Data @NoArgsConstructor
 @Entity
