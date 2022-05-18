@@ -18,10 +18,9 @@ public class Chute  extends Plaque{
 	@Transient
 	private long surface;
 	
-	public Chute(Long id,String designation,long numeroArticle,
-	GroupeArticle groupeArticle,long quantite,long quantiteMoisPrecedent,
+	public Chute(Long id,long quantite,long quantiteMoisPrecedent,
 	long longueur,long largeur) {
-		super(id,designation,numeroArticle,groupeArticle, quantite, quantiteMoisPrecedent);
+		super(id,quantite, quantiteMoisPrecedent);
 		this.longueur=longueur;
 		this.largeur=largeur;
 		calculerSurface();

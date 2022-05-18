@@ -21,6 +21,5 @@ public class GroupeArticle implements Serializable {
     private String designation;
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "groupeArticle",fetch = FetchType.EAGER)
-    private Collection<Plaque> plaques=new HashSet<Plaque>();
-     
+    private Collection<ListPlaques> listePlaques=new HashSet<ListPlaques>();
 }

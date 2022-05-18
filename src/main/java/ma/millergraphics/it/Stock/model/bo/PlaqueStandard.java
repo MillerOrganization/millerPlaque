@@ -24,7 +24,7 @@ public class PlaqueStandard extends Plaque {
 	public PlaqueStandard(Long id,String designation,long numeroArticle,
     		GroupeArticle groupeArticle,long quantite,long quantiteMoisPrecedent,
     		TaillePlaque taillePlaque) {
-		super(id,designation,numeroArticle,groupeArticle, quantite, quantiteMoisPrecedent);
+		super(id,quantite, quantiteMoisPrecedent);
 		taille=taillePlaque;
 	}
 	

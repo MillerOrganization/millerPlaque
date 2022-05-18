@@ -10,6 +10,8 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 @Data @NoArgsConstructor @AllArgsConstructor
 @Entity
@@ -37,6 +39,8 @@ public class Utilisateur implements Serializable {
 	private Date dateNaissance;
 	@ManyToMany(fetch = FetchType.EAGER)
 	private Collection<Role> roles=new HashSet<Role>();
+	@OneToMany(mappedBy = "utilisateur")
+	private Collection<UtilisateurPlaque> utilisateurPlaques=new HashSet<UtilisateurPlaque>();
 	
 	public Utilisateur(Long id,String nom,String prenom,String mail,String password,
 			String username,String phone,Date dateNaissance) {
@@ -49,6 +53,7 @@ public class Utilisateur implements Serializable {
 		this.phone=phone;
 		this.dateNaissance=dateNaissance;
 		roles=new HashSet<Role>();
+		utilisateurPlaques=new HashSet<UtilisateurPlaque>();
 	}
 
 }
