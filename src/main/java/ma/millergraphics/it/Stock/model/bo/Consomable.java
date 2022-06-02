@@ -2,7 +2,11 @@ package ma.millergraphics.it.Stock.model.bo;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
+
+import java.util.Collection;
+import java.util.HashSet;
 
 @Entity
 @Data
@@ -10,6 +14,9 @@ public class Consomable extends Article {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@Column(length = 25)
-	private String designation;
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+	@OneToMany(mappedBy = "consomable",fetch = FetchType.LAZY)
+	Collection<UtilisateurConsomable> utilisateurConsomables=new HashSet<UtilisateurConsomable>();
+	@ManyToOne
+	private ListConsomable listConsomable;
 }

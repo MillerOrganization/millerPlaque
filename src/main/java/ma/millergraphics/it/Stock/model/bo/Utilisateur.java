@@ -5,13 +5,12 @@ import java.util.*;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
+import ma.millergraphics.it.Stock.hash.BCryptPasswordDeserializer;
 
 @Data @NoArgsConstructor @AllArgsConstructor
 @Entity
@@ -32,6 +31,8 @@ public class Utilisateur implements Serializable {
 	private String mail;
 	@Column(length = 25,unique = true)
 	private String username;
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+	@JsonDeserialize(using = BCryptPasswordDeserializer.class )
 	private String password;
 	@Column(length = 15)
 	private String phone;
