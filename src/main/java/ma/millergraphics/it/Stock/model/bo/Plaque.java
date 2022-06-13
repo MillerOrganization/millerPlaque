@@ -28,7 +28,7 @@ public abstract class Plaque extends Article{
 	@ManyToOne
 	private ListPlaques listPlaques;
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-	@OneToMany(mappedBy = "plaque")
+	@OneToMany(mappedBy = "plaque",fetch = FetchType.LAZY,orphanRemoval = true)
 	Collection<UtilisateurPlaque> utilisateurPlaques=new HashSet<UtilisateurPlaque>();
     
     public Plaque(Long id,long quantite,long quantiteMoisPrecedent) {

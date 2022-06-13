@@ -48,6 +48,6 @@ public class StockApplication implements CommandLineRunner ,WebMvcConfigurer{
 	@Override
 	public void run(String... args) throws Exception {
 		configuration.exposeIdsFor(Utilisateur.class, TaillePlaque.class, GroupeArticle.class,Role.class
-		,ListPlaques.class,Plaque.class);
+		,ListPlaques.class,PlaqueStandard.class,Chute.class);
 	}
 }

@@ -16,7 +16,7 @@ public class ListConsomable {
     private String designation;
     private long numeroArticle;
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    @OneToMany(mappedBy = "listConsomable",fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "listConsomable",fetch = FetchType.LAZY,orphanRemoval = true)
     private Collection<Consomable> consomables=new HashSet<>();
 
     @ManyToOne

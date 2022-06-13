@@ -40,8 +40,14 @@ public class Utilisateur implements Serializable {
 	private Date dateNaissance;
 	@ManyToMany(fetch = FetchType.EAGER)
 	private Collection<Role> roles=new HashSet<Role>();
-	@OneToMany(mappedBy = "utilisateur")
+	@OneToMany(mappedBy = "utilisateur",orphanRemoval = true)
 	private Collection<UtilisateurPlaque> utilisateurPlaques=new HashSet<UtilisateurPlaque>();
+
+	@OneToMany(mappedBy = "utilisateur",orphanRemoval = true)
+	private Collection<UtilisateurConsomable> utilisateurConsomables=new HashSet<>();
+
+	@OneToMany(mappedBy = "commercial",fetch = FetchType.LAZY,orphanRemoval = true)
+	Collection<Commande> commandes=new HashSet<>();
 	
 	public Utilisateur(Long id,String nom,String prenom,String mail,String password,
 			String username,String phone,Date dateNaissance) {
@@ -53,8 +59,9 @@ public class Utilisateur implements Serializable {
 		this.username=username;
 		this.phone=phone;
 		this.dateNaissance=dateNaissance;
-		roles=new HashSet<Role>();
-		utilisateurPlaques=new HashSet<UtilisateurPlaque>();
+		/*roles=new HashSet<Role>();
+		utilisateurPlaques=new HashSet<UtilisateurPlaque>();*/
+
 	}
 
 }

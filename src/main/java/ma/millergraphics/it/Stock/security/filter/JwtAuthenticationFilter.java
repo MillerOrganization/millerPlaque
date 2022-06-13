@@ -43,6 +43,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         User user=(User)authResult.getPrincipal();
         Algorithm algorithm=Algorithm.HMAC256(JwtUtil.SECRET);
         String jwtAccessToken= JWT.create().withSubject(user.getUsername())
+                .withIssuedAt(new Date(System.currentTimeMillis()))
                 .withExpiresAt(new Date(System.currentTimeMillis()+JwtUtil.EXPIRED_ACCESS_TOKEN))
                 .withIssuer(request.getRequestURL().toString())
                 .withClaim("roles",user.getAuthorities().stream().map(ga->ga.getAuthority()).collect(Collectors.toList()))

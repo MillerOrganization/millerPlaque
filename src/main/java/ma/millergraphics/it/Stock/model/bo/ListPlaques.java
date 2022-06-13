@@ -21,6 +21,6 @@ public class ListPlaques {
     @ManyToOne
     private GroupeArticle groupeArticle;
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    @OneToMany(mappedBy = "listPlaques",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "listPlaques",fetch = FetchType.EAGER,orphanRemoval = true)
     private Collection<Plaque> plaques=new HashSet<>();
 }

@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Date;
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -15,6 +17,10 @@ public class UtilisateurPlaque {
     Long id;
     @Column(nullable = false)
     private int quantite;
+    @Temporal(TemporalType.DATE)
+    private Date date=new Date();
+    @Temporal(TemporalType.TIME)
+    private Date time=new Date();
     @ManyToOne
     private Utilisateur utilisateur;
     @JsonProperty(access = JsonProperty.Access.READ_WRITE)

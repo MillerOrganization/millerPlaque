@@ -15,8 +15,10 @@ public class Consomable extends Article {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-	@OneToMany(mappedBy = "consomable",fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "consomable",fetch = FetchType.LAZY,orphanRemoval = true)
 	Collection<UtilisateurConsomable> utilisateurConsomables=new HashSet<UtilisateurConsomable>();
 	@ManyToOne
 	private ListConsomable listConsomable;
+	@OneToMany(mappedBy = "consomable",fetch = FetchType.LAZY,orphanRemoval = true)
+	private Collection<LigneCommande> ligneCommandes=new HashSet<>();
 }

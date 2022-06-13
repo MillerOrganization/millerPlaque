@@ -75,9 +75,13 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/listConsomables/{id}/categorie/**").hasAuthority("operateur production");
         http.authorizeRequests().antMatchers("/listConsomables/**").hasAuthority("admin");
         http.authorizeRequests().antMatchers("/utilisateurs/search/byUsername/**").hasAuthority("operateur production");
-        /*http.authorizeRequests().antMatchers("/utilisateurs/**").hasAuthority("admin");*/
+        http.authorizeRequests().antMatchers("/utilisateurs/{id}/utilisateurPlaques/**").hasAuthority("operateur production");
+        http.authorizeRequests().antMatchers("/utilisateurs/{id}/utilisateurConsomables/**").hasAuthority("operateur production");
+        http.authorizeRequests().antMatchers("/utilisateurs/**").hasAuthority("admin");
         http.authorizeRequests().antMatchers("/utilisateurConsomables/**").hasAuthority("operateur production");
         http.authorizeRequests().antMatchers("/utilisateurPlaques/**").hasAuthority("operateur production");
+        http.authorizeRequests().antMatchers(HttpMethod.POST,"/ligneCommandes/**").hasAuthority("commercial");
+        http.authorizeRequests().antMatchers(HttpMethod.PUT,"/ligneCommandes/**").hasAuthority("commercial");
         plaquesAndConsomablesAuhorities("plaques",http);
         plaquesAndConsomablesAuhorities("consomables",http);
         http.authorizeRequests().anyRequest().authenticated();
