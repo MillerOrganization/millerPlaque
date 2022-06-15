@@ -57,9 +57,15 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     void plaquesAndConsomablesAuhorities(String resources,HttpSecurity http) throws Exception{
         http.authorizeRequests().antMatchers(HttpMethod.DELETE,"/"+resources+"/**").hasAuthority("responsable production");
         http.authorizeRequests().antMatchers(HttpMethod.POST,"/"+resources+"/**").hasAuthority("operateur production");
-        http.authorizeRequests().antMatchers(HttpMethod.GET,"/"+resources+"/**").hasAuthority("operateur production");
-        http.authorizeRequests().antMatchers(HttpMethod.PUT,"/"+resources+"/**").hasAuthority("operateur production");
-        http.authorizeRequests().antMatchers(HttpMethod.PATCH,"/"+resources+"/**").hasAuthority("operateur production");
+        if(resources.equals("consomables")) {
+            http.authorizeRequests().antMatchers(HttpMethod.GET, "/" + resources + "/**").hasAnyAuthority("operateur production","commercial");
+            http.authorizeRequests().antMatchers(HttpMethod.PUT, "/" + resources + "/**").hasAnyAuthority("operateur production","commercial");
+            http.authorizeRequests().antMatchers(HttpMethod.PATCH, "/" + resources + "/**").hasAnyAuthority("operateur production","commercial");
+        }else{
+            http.authorizeRequests().antMatchers(HttpMethod.GET, "/" + resources + "/**").hasAuthority("operateur production");
+            http.authorizeRequests().antMatchers(HttpMethod.PUT, "/" + resources + "/**").hasAuthority("operateur production");
+            http.authorizeRequests().antMatchers(HttpMethod.PATCH, "/" + resources + "/**").hasAuthority("operateur production");
+        }
     }
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -72,12 +78,14 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         /*http.authorizeRequests().antMatchers(HttpMethod.POST,"/users/**").hasAuthority("admin");
         http.authorizeRequests().antMatchers(HttpMethod.GET,"/users/**").hasAuthority("user");*/
         http.authorizeRequests().antMatchers("/listPlaques/**").hasAuthority("admin");
-        http.authorizeRequests().antMatchers("/listConsomables/{id}/categorie/**").hasAuthority("operateur production");
+        http.authorizeRequests().antMatchers("/listConsomables/{id}/categorie/**").hasAnyAuthority("operateur production","commercial");
         http.authorizeRequests().antMatchers("/listConsomables/**").hasAuthority("admin");
-        http.authorizeRequests().antMatchers("/utilisateurs/search/byUsername/**").hasAuthority("operateur production");
+        http.authorizeRequests().antMatchers("/utilisateurs/search/byUsername/**").hasAnyAuthority("operateur production","commercial");
         http.authorizeRequests().antMatchers("/utilisateurs/{id}/utilisateurPlaques/**").hasAuthority("operateur production");
         http.authorizeRequests().antMatchers("/utilisateurs/{id}/utilisateurConsomables/**").hasAuthority("operateur production");
         http.authorizeRequests().antMatchers("/utilisateurs/**").hasAuthority("admin");
+        http.authorizeRequests().antMatchers(HttpMethod.PUT,"/consomables/**").hasAnyAuthority("operateur production","commercial");
+        http.authorizeRequests().antMatchers(HttpMethod.GET,"/consomables/**").hasAnyAuthority("operateur production","commercial");
         http.authorizeRequests().antMatchers("/utilisateurConsomables/**").hasAuthority("operateur production");
         http.authorizeRequests().antMatchers("/utilisateurPlaques/**").hasAuthority("operateur production");
         http.authorizeRequests().antMatchers(HttpMethod.POST,"/ligneCommandes/**").hasAuthority("commercial");

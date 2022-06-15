@@ -18,7 +18,6 @@ public class ListConsomable {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "listConsomable",fetch = FetchType.LAZY,orphanRemoval = true)
     private Collection<Consomable> consomables=new HashSet<>();
-
     @ManyToOne
     private Categorie categorie;
 }
