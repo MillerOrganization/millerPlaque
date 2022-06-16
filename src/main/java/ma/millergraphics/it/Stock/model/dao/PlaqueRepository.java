@@ -14,10 +14,12 @@ import java.util.List;
 @RepositoryRestResource
 public interface PlaqueRepository<T extends Plaque> extends JpaRepository<T, Long>{
     /*List<Plaque> findByDesignationContains(String kw);*/
-    @Query("select c from Chute  as c where c.longueur>=:longueur and c.largeur>=:largeur")
+    @Query("select c from Chute  as c where (c.longueur>=:longueur and c.largeur>=:largeur) OR"+
+    "(c.longueur>=:largeur and c.largeur>=:longueur)")
     List<Plaque> findChutesByLongueurAndByLargeur(@Param("longueur") long longueur,@Param("largeur")long largeur);
-    @Query("from PlaqueStandard as p left join p.taille as taille where "+
-    "taille.longueur>=:longueur and taille.largeur>=:largeur")
+    @Query("from PlaqueStandard as p  where "+
+    "(p.taille.longueur>=:longueur and p.taille.largeur>=:largeur) OR" +
+            " (p.taille.longueur>=:largeur and p.taille.largeur>=:longueur)")
     List<Plaque> findPlaqueStandardByLongueurAndByLargeur(@Param("longueur") long longueur,
                                                           @Param("largeur")long largeur);
 
