@@ -1,5 +1,6 @@
 package ma.millergraphics.it.Stock.model.bo;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -20,6 +21,7 @@ public class Commande {
     private Client client;
     @ManyToOne
     private Utilisateur commercial;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "commande",fetch = FetchType.LAZY,orphanRemoval = true)
     private Collection<LigneCommande> ligneCommandes=new HashSet<>();
 

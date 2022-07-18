@@ -14,11 +14,11 @@ import java.util.*;
 @AllArgsConstructor
 public class PlaqueServiceImpl implements PlaqueService{
 
-    PlaqueRepository<Plaque> plaqueRepository;
+    private PlaqueRepository<Plaque> plaqueRepository;
 
-    TaillePlaqueRepository taillePlaqueRepository;
+    private TaillePlaqueRepository taillePlaqueRepository;
 
-    ListPlaquesRepository listPlaquesRepository;
+    private ListPlaquesRepository listPlaquesRepository;
     @Override
     public void completerPlaque(Plaque plaque) {
         plaque.calculerDifference();

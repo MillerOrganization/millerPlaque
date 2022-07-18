@@ -90,6 +90,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/utilisateurPlaques/**").hasAuthority("operateur production");
         http.authorizeRequests().antMatchers(HttpMethod.POST,"/ligneCommandes/**").hasAuthority("commercial");
         http.authorizeRequests().antMatchers(HttpMethod.PUT,"/ligneCommandes/**").hasAuthority("commercial");
+        http.authorizeRequests().antMatchers(HttpMethod.PUT,"/consomable/byListConsomable/**").hasAnyAuthority("operateur production","commercial");
         plaquesAndConsomablesAuhorities("plaques",http);
         plaquesAndConsomablesAuhorities("consomables",http);
         http.authorizeRequests().anyRequest().authenticated();

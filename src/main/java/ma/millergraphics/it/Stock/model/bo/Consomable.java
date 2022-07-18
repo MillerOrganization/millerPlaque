@@ -19,6 +19,7 @@ public class Consomable extends Article {
 	Collection<UtilisateurConsomable> utilisateurConsomables=new HashSet<UtilisateurConsomable>();
 	@ManyToOne
 	private ListConsomable listConsomable;
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	@OneToMany(mappedBy = "consomable",fetch = FetchType.LAZY,orphanRemoval = true)
 	private Collection<LigneCommande> ligneCommandes=new HashSet<>();
 }
